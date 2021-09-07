@@ -1314,13 +1314,6 @@
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-        <hashTree>
-          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
-            <stringProp name="ConstantTimer.delay">1000</stringProp>
-          </ConstantTimer>
-          <hashTree/>
-        </hashTree>
       </hashTree>
       <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Clients Failed" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
@@ -1579,6 +1572,13 @@
             <boolProp name="Assertion.assume_success">true</boolProp>
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+          </ConstantTimer>
           <hashTree/>
         </hashTree>
       </hashTree>

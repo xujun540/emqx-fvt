@@ -16,7 +16,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="emqx_ip" elementType="Argument">
             <stringProp name="Argument.name">emqx_ip</stringProp>
-            <stringProp name="Argument.value">${__property(emqx_ip,,)}</stringProp>
+            <stringProp name="Argument.value">${__property(emqx_ip,,127.0.0.1)}</stringProp>
             <stringProp name="Argument.desc">emqx server ip</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
@@ -226,7 +226,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -312,7 +312,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -342,7 +342,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -355,7 +355,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -404,7 +404,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">20</intProp>
+              <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -472,7 +472,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -502,7 +502,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -515,7 +515,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -564,7 +564,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">20</intProp>
+              <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -713,7 +713,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -726,7 +726,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">true</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -775,7 +775,7 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">20</intProp>
+              <intProp name="Assertion.test_type">6</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1580,7 +1580,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -1661,7 +1661,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -1741,7 +1741,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -1771,7 +1771,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -1801,7 +1801,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
             <boolProp name="Assertion.assume_success">true</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>

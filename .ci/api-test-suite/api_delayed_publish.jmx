@@ -39,7 +39,7 @@
           </elementProp>
           <elementProp name="delayed_topic" elementType="Argument">
             <stringProp name="Argument.name">delayed_topic</stringProp>
-            <stringProp name="Argument.value">$delayed/10/d/b</stringProp>
+            <stringProp name="Argument.value">$delayed/3/d/b</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>
@@ -245,7 +245,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -493,9 +493,9 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="PUT /mqtt/delayed --max limit 2" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="PUT /mqtt/delayed --max limit 1" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <stringProp name="TestPlan.comments">&quot;max_delayed_messages&quot;: 2</stringProp>
+          <stringProp name="TestPlan.comments">&quot;max_delayed_messages&quot;: 1</stringProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -507,7 +507,7 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;enable&quot;: true,&#xd;
-  &quot;max_delayed_messages&quot;: 2&#xd;
+  &quot;max_delayed_messages&quot;: 1&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -540,7 +540,7 @@
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
-            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.server">${emqx_ip}</stringProp>
             <stringProp name="mqtt.port">1883</stringProp>
             <stringProp name="mqtt.version">3.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
@@ -561,7 +561,7 @@
           <hashTree/>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
             <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
+            <stringProp name="mqtt.qos_level">1</stringProp>
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <stringProp name="mqtt.message_type">String</stringProp>
             <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
@@ -576,13 +576,13 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
             <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
+            <stringProp name="mqtt.qos_level">1</stringProp>
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <stringProp name="mqtt.message_type">String</stringProp>
             <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
@@ -601,27 +601,10 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
-            <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
-            <boolProp name="mqtt.add_timestamp">false</boolProp>
-            <stringProp name="mqtt.message_type">String</stringProp>
-            <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
-            <stringProp name="mqtt.message_to_sent">{ &quot;msg&quot;: &quot;hello&quot; }</stringProp>
-            <boolProp name="mqtt.retained_message">false</boolProp>
-          </net.xmeter.samplers.PubSampler>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="133864302">Publish successfuly</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /mqtt/delayed/messages" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -630,7 +613,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages?page=1&amp;limit=20</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -643,12 +626,12 @@
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Count" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1695996531">&quot;count&quot;:2</stringProp>
+                <stringProp name="-1695996532">&quot;count&quot;:1</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -675,10 +658,6 @@
             <elementProp name="" elementType="Header">
               <stringProp name="Header.name">content-type</stringProp>
               <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
-            </elementProp>
-            <elementProp name="" elementType="Header">
-              <stringProp name="Header.name">Authorization</stringProp>
-              <stringProp name="Header.value">Bearer ${token}</stringProp>
             </elementProp>
           </collectionProp>
         </HeaderManager>
@@ -749,6 +728,10 @@
             <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">3000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
         </hashTree>
         <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
           <stringProp name="mqtt.server">${emqx_ip}</stringProp>
@@ -777,7 +760,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -798,7 +781,7 @@
             <stringProp name="Assertion.custom_message"></stringProp>
             <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
             <boolProp name="Assertion.assume_success">false</boolProp>
-            <intProp name="Assertion.test_type">16</intProp>
+            <intProp name="Assertion.test_type">2</intProp>
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
@@ -1036,9 +1019,9 @@
             <hashTree/>
           </hashTree>
         </hashTree>
-        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="PUT /mqtt/delayed --max limit 2" enabled="true">
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="PUT /mqtt/delayed --max limit 1" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
-          <stringProp name="TestPlan.comments">&quot;max_delayed_messages&quot;: 2</stringProp>
+          <stringProp name="TestPlan.comments">&quot;max_delayed_messages&quot;: 1</stringProp>
           <boolProp name="TransactionController.parent">false</boolProp>
         </TransactionController>
         <hashTree>
@@ -1050,7 +1033,7 @@
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
                   <stringProp name="Argument.value">{&#xd;
   &quot;enable&quot;: true,&#xd;
-  &quot;max_delayed_messages&quot;: 2&#xd;
+  &quot;max_delayed_messages&quot;: 1&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -1070,9 +1053,20 @@
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
             <stringProp name="HTTPSampler.response_timeout"></stringProp>
           </HTTPSamplerProxy>
-          <hashTree/>
+          <hashTree>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Enable" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="-234282421">&quot;enable&quot;:true</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.custom_message"></stringProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">2</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
           <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
-            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.server">${emqx_ip}</stringProp>
             <stringProp name="mqtt.port">1883</stringProp>
             <stringProp name="mqtt.version">3.1</stringProp>
             <stringProp name="mqtt.conn_timeout">10</stringProp>
@@ -1093,7 +1087,7 @@
           <hashTree/>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
             <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
+            <stringProp name="mqtt.qos_level">1</stringProp>
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <stringProp name="mqtt.message_type">String</stringProp>
             <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
@@ -1108,13 +1102,13 @@
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
             <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
+            <stringProp name="mqtt.qos_level">1</stringProp>
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <stringProp name="mqtt.message_type">String</stringProp>
             <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
@@ -1133,27 +1127,10 @@
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
-          <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
-            <stringProp name="mqtt.topic_name">${delayed_topic}</stringProp>
-            <stringProp name="mqtt.qos_level">0</stringProp>
-            <boolProp name="mqtt.add_timestamp">false</boolProp>
-            <stringProp name="mqtt.message_type">String</stringProp>
-            <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
-            <stringProp name="mqtt.message_to_sent">{ &quot;msg&quot;: &quot;hello&quot; }</stringProp>
-            <boolProp name="mqtt.retained_message">false</boolProp>
-          </net.xmeter.samplers.PubSampler>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="133864302">Publish successfuly</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
+          <hashTree/>
           <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /mqtt/delayed/messages" enabled="true">
             <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
               <collectionProp name="Arguments.arguments"/>
@@ -1162,7 +1139,7 @@
             <stringProp name="HTTPSampler.port"></stringProp>
             <stringProp name="HTTPSampler.protocol"></stringProp>
             <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages</stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/mqtt/delayed/messages?page=1&amp;limit=20</stringProp>
             <stringProp name="HTTPSampler.method">GET</stringProp>
             <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
             <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
@@ -1175,12 +1152,12 @@
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion Count" enabled="true">
               <collectionProp name="Asserion.test_strings">
-                <stringProp name="-1695996531">&quot;count&quot;:2</stringProp>
+                <stringProp name="-1695996532">&quot;count&quot;:1</stringProp>
               </collectionProp>
               <stringProp name="Assertion.custom_message"></stringProp>
               <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
               <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">16</intProp>
+              <intProp name="Assertion.test_type">2</intProp>
             </ResponseAssertion>
             <hashTree/>
           </hashTree>
@@ -1261,6 +1238,10 @@
             <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
             <stringProp name="JSONPostProcessor.defaultValues">err_token</stringProp>
           </JSONPostProcessor>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">10000</stringProp>
+          </ConstantTimer>
           <hashTree/>
         </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="GET /mqtt/delayed/messages/{msgid}" enabled="true">

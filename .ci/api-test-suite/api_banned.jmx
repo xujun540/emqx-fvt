@@ -620,7 +620,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor Peerhost" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">peerhost</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;ip_address&quot;:&quot;(.*?):</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;ip_address&quot;:&quot;(.*?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">err</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>
@@ -1322,7 +1322,7 @@
             <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor Peerhost" enabled="true">
               <stringProp name="RegexExtractor.useHeaders">false</stringProp>
               <stringProp name="RegexExtractor.refname">peerhost</stringProp>
-              <stringProp name="RegexExtractor.regex">&quot;ip_address&quot;:&quot;(.*?):</stringProp>
+              <stringProp name="RegexExtractor.regex">&quot;ip_address&quot;:&quot;(.*?)&quot;</stringProp>
               <stringProp name="RegexExtractor.template">$1$</stringProp>
               <stringProp name="RegexExtractor.default">err</stringProp>
               <stringProp name="RegexExtractor.match_number">0</stringProp>

@@ -1,0 +1,1052 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments">
+          <elementProp name="emqx_ip" elementType="Argument">
+            <stringProp name="Argument.name">emqx_ip</stringProp>
+            <stringProp name="Argument.value">${__property(emqx_ip,,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.desc">emqx server ip</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="emqx_user" elementType="Argument">
+            <stringProp name="Argument.name">emqx_user</stringProp>
+            <stringProp name="Argument.value">admin</stringProp>
+            <stringProp name="Argument.desc">emqx account</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="emqx_pwd" elementType="Argument">
+            <stringProp name="Argument.name">emqx_pwd</stringProp>
+            <stringProp name="Argument.value">public</stringProp>
+            <stringProp name="Argument.desc">emqx password</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="test_topic" elementType="Argument">
+            <stringProp name="Argument.name">test_topic</stringProp>
+            <stringProp name="Argument.value">test/emqx</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="web_ip" elementType="Argument">
+            <stringProp name="Argument.name">web_ip</stringProp>
+            <stringProp name="Argument.value">${__property(web_ip,,127.0.0.1)}</stringProp>
+            <stringProp name="Argument.desc">web server ip</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="port" elementType="Argument">
+            <stringProp name="Argument.name">port</stringProp>
+            <stringProp name="Argument.value">${__property(port,,8080)}</stringProp>
+            <stringProp name="Argument.desc">port</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="api_version" elementType="Argument">
+            <stringProp name="Argument.name">api_version</stringProp>
+            <stringProp name="Argument.value">/api/v4</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+        </collectionProp>
+      </Arguments>
+      <hashTree/>
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+        <objProp>
+          <name>saveConfig</name>
+          <value class="SampleSaveConfiguration">
+            <time>true</time>
+            <latency>true</latency>
+            <timestamp>true</timestamp>
+            <success>true</success>
+            <label>true</label>
+            <code>true</code>
+            <message>true</message>
+            <threadName>true</threadName>
+            <dataType>true</dataType>
+            <encoding>false</encoding>
+            <assertions>true</assertions>
+            <subresults>true</subresults>
+            <responseData>false</responseData>
+            <samplerData>false</samplerData>
+            <xml>false</xml>
+            <fieldNames>true</fieldNames>
+            <responseHeaders>false</responseHeaders>
+            <requestHeaders>false</requestHeaders>
+            <responseDataOnError>false</responseDataOnError>
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+            <bytes>true</bytes>
+            <sentBytes>true</sentBytes>
+            <url>true</url>
+            <threadCounts>true</threadCounts>
+            <idleTime>true</idleTime>
+            <connectTime>true</connectTime>
+          </value>
+        </objProp>
+        <stringProp name="filename"></stringProp>
+      </ResultCollector>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="WebHook Data Bridge" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </ThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">18083</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">http://${emqx_ip}:18083</stringProp>
+              <stringProp name="Authorization.username">${emqx_user}</stringProp>
+              <stringProp name="Authorization.password">${emqx_pwd}</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">http://${db_ip}:${port}</stringProp>
+              <stringProp name="Authorization.username">${db_user}</stringProp>
+              <stringProp name="Authorization.password">${db_pwd}</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add Webhook Resource" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;type&quot;:&quot;web_hook&quot;,&quot;config&quot;:{&quot;url&quot;:&quot;http://${web_ip}:${port}&quot;,&quot;connect_timeout&quot;:&quot;5s&quot;,&quot;request_timeout&quot;:&quot;5s&quot;,&quot;pool_size&quot;:8,&quot;enable_pipelining&quot;:true,&quot;cacertfile&quot;:{&quot;file&quot;:&quot;&quot;,&quot;filename&quot;:&quot;&quot;},&quot;keyfile&quot;:{&quot;file&quot;:&quot;&quot;,&quot;filename&quot;:&quot;&quot;},&quot;certfile&quot;:{&quot;file&quot;:&quot;&quot;,&quot;filename&quot;:&quot;&quot;},&quot;verify&quot;:false},&quot;description&quot;:&quot;&quot;,&quot;id&quot;:&quot;resource:${__Random(100000,999999,ra)}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/resources</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Add Rule" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;rawsql&quot;:&quot;SELECT\n\n*\nFROM\n\n  \&quot;test/#\&quot;&quot;,&quot;actions&quot;:[{&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;params&quot;:{&quot;method&quot;:&quot;POST&quot;,&quot;path&quot;:&quot;/post/request&quot;,&quot;headers&quot;:{},&quot;body&quot;:&quot;&quot;,&quot;$resource&quot;:&quot;resource:${ra}&quot;},&quot;fallbacks&quot;:[],&quot;_config&quot;:{&quot;types&quot;:[&quot;web_hook&quot;],&quot;title&quot;:&quot;Data to Web Server&quot;,&quot;params&quot;:{&quot;path&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Path&quot;,&quot;required&quot;:false,&quot;order&quot;:2,&quot;description&quot;:&quot;The path part of the URL, support using ${Var} to get the field value output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;method&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Method&quot;,&quot;order&quot;:1,&quot;enum&quot;:[&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;,&quot;GET&quot;],&quot;description&quot;:&quot;HTTP Method.\nNote that: the Body option in the Action will be discarded in case of GET or DELETE method.&quot;,&quot;default&quot;:&quot;POST&quot;},&quot;headers&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;Headers&quot;,&quot;schema&quot;:{},&quot;order&quot;:3,&quot;description&quot;:&quot;HTTP headers.&quot;,&quot;default&quot;:{&quot;content-type&quot;:&quot;application/json&quot;}},&quot;body&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Body&quot;,&quot;required&quot;:false,&quot;order&quot;:4,&quot;input&quot;:&quot;textarea&quot;,&quot;description&quot;:&quot;The HTTP body supports the use of ${Var} to obtain the field value output by the rule.\nThe content of the default HTTP request body is a JSON string composed of the keys and values of all fields output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;$resource&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Resource ID&quot;,&quot;required&quot;:true,&quot;order&quot;:0,&quot;description&quot;:&quot;Bind a resource to this action&quot;}},&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;for&quot;:&quot;$any&quot;,&quot;description&quot;:&quot;Forward Messages to Web Server&quot;,&quot;category&quot;:&quot;data_forward&quot;,&quot;app&quot;:&quot;emqx_web_hook&quot;},&quot;_value&quot;:[{&quot;label&quot;:&quot;Method&quot;,&quot;value&quot;:&quot;POST&quot;,&quot;key&quot;:&quot;method&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Path&quot;,&quot;value&quot;:&quot;/post/request&quot;,&quot;key&quot;:&quot;path&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Headers&quot;,&quot;value&quot;:{},&quot;key&quot;:&quot;headers&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Body&quot;,&quot;value&quot;:&quot;&quot;,&quot;key&quot;:&quot;body&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Resource ID&quot;,&quot;value&quot;:&quot;resource:${ra}&quot;,&quot;key&quot;:&quot;$resource&quot;,&quot;fallbacks&quot;:[]}]},{&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;params&quot;:{&quot;method&quot;:&quot;DELETE&quot;,&quot;path&quot;:&quot;/delete/request&quot;,&quot;headers&quot;:{},&quot;body&quot;:&quot;&quot;,&quot;$resource&quot;:&quot;resource:${ra}&quot;},&quot;fallbacks&quot;:[],&quot;_config&quot;:{&quot;types&quot;:[&quot;web_hook&quot;],&quot;title&quot;:&quot;Data to Web Server&quot;,&quot;params&quot;:{&quot;path&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Path&quot;,&quot;required&quot;:false,&quot;order&quot;:2,&quot;description&quot;:&quot;The path part of the URL, support using ${Var} to get the field value output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;method&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Method&quot;,&quot;order&quot;:1,&quot;enum&quot;:[&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;,&quot;GET&quot;],&quot;description&quot;:&quot;HTTP Method.\nNote that: the Body option in the Action will be discarded in case of GET or DELETE method.&quot;,&quot;default&quot;:&quot;POST&quot;},&quot;headers&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;Headers&quot;,&quot;schema&quot;:{},&quot;order&quot;:3,&quot;description&quot;:&quot;HTTP headers.&quot;,&quot;default&quot;:{&quot;content-type&quot;:&quot;application/json&quot;}},&quot;body&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Body&quot;,&quot;required&quot;:false,&quot;order&quot;:4,&quot;input&quot;:&quot;textarea&quot;,&quot;description&quot;:&quot;The HTTP body supports the use of ${Var} to obtain the field value output by the rule.\nThe content of the default HTTP request body is a JSON string composed of the keys and values of all fields output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;$resource&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Resource ID&quot;,&quot;required&quot;:true,&quot;order&quot;:0,&quot;description&quot;:&quot;Bind a resource to this action&quot;}},&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;for&quot;:&quot;$any&quot;,&quot;description&quot;:&quot;Forward Messages to Web Server&quot;,&quot;category&quot;:&quot;data_forward&quot;,&quot;app&quot;:&quot;emqx_web_hook&quot;},&quot;_value&quot;:[{&quot;label&quot;:&quot;Method&quot;,&quot;value&quot;:&quot;DELETE&quot;,&quot;key&quot;:&quot;method&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Path&quot;,&quot;value&quot;:&quot;/delete/request&quot;,&quot;key&quot;:&quot;path&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Headers&quot;,&quot;value&quot;:{},&quot;key&quot;:&quot;headers&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Body&quot;,&quot;value&quot;:&quot;&quot;,&quot;key&quot;:&quot;body&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Resource ID&quot;,&quot;value&quot;:&quot;resource:${ra}&quot;,&quot;key&quot;:&quot;$resource&quot;,&quot;fallbacks&quot;:[]}]},{&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;params&quot;:{&quot;method&quot;:&quot;PUT&quot;,&quot;path&quot;:&quot;/put/request&quot;,&quot;headers&quot;:{},&quot;body&quot;:&quot;&quot;,&quot;$resource&quot;:&quot;resource:${ra}&quot;},&quot;fallbacks&quot;:[],&quot;_config&quot;:{&quot;types&quot;:[&quot;web_hook&quot;],&quot;title&quot;:&quot;Data to Web Server&quot;,&quot;params&quot;:{&quot;path&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Path&quot;,&quot;required&quot;:false,&quot;order&quot;:2,&quot;description&quot;:&quot;The path part of the URL, support using ${Var} to get the field value output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;method&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Method&quot;,&quot;order&quot;:1,&quot;enum&quot;:[&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;,&quot;GET&quot;],&quot;description&quot;:&quot;HTTP Method.\nNote that: the Body option in the Action will be discarded in case of GET or DELETE method.&quot;,&quot;default&quot;:&quot;POST&quot;},&quot;headers&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;Headers&quot;,&quot;schema&quot;:{},&quot;order&quot;:3,&quot;description&quot;:&quot;HTTP headers.&quot;,&quot;default&quot;:{&quot;content-type&quot;:&quot;application/json&quot;}},&quot;body&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Body&quot;,&quot;required&quot;:false,&quot;order&quot;:4,&quot;input&quot;:&quot;textarea&quot;,&quot;description&quot;:&quot;The HTTP body supports the use of ${Var} to obtain the field value output by the rule.\nThe content of the default HTTP request body is a JSON string composed of the keys and values of all fields output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;$resource&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Resource ID&quot;,&quot;required&quot;:true,&quot;order&quot;:0,&quot;description&quot;:&quot;Bind a resource to this action&quot;}},&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;for&quot;:&quot;$any&quot;,&quot;description&quot;:&quot;Forward Messages to Web Server&quot;,&quot;category&quot;:&quot;data_forward&quot;,&quot;app&quot;:&quot;emqx_web_hook&quot;},&quot;_value&quot;:[{&quot;label&quot;:&quot;Method&quot;,&quot;value&quot;:&quot;PUT&quot;,&quot;key&quot;:&quot;method&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Path&quot;,&quot;value&quot;:&quot;/put/request&quot;,&quot;key&quot;:&quot;path&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Headers&quot;,&quot;value&quot;:{},&quot;key&quot;:&quot;headers&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Body&quot;,&quot;value&quot;:&quot;&quot;,&quot;key&quot;:&quot;body&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Resource ID&quot;,&quot;value&quot;:&quot;resource:${ra}&quot;,&quot;key&quot;:&quot;$resource&quot;,&quot;fallbacks&quot;:[]}]},{&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;params&quot;:{&quot;method&quot;:&quot;GET&quot;,&quot;path&quot;:&quot;/get/request&quot;,&quot;headers&quot;:{},&quot;body&quot;:&quot;&quot;,&quot;$resource&quot;:&quot;resource:${ra}&quot;},&quot;fallbacks&quot;:[],&quot;_config&quot;:{&quot;types&quot;:[&quot;web_hook&quot;],&quot;title&quot;:&quot;Data to Web Server&quot;,&quot;params&quot;:{&quot;path&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Path&quot;,&quot;required&quot;:false,&quot;order&quot;:2,&quot;description&quot;:&quot;The path part of the URL, support using ${Var} to get the field value output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;method&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Method&quot;,&quot;order&quot;:1,&quot;enum&quot;:[&quot;POST&quot;,&quot;DELETE&quot;,&quot;PUT&quot;,&quot;GET&quot;],&quot;description&quot;:&quot;HTTP Method.\nNote that: the Body option in the Action will be discarded in case of GET or DELETE method.&quot;,&quot;default&quot;:&quot;POST&quot;},&quot;headers&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;title&quot;:&quot;Headers&quot;,&quot;schema&quot;:{},&quot;order&quot;:3,&quot;description&quot;:&quot;HTTP headers.&quot;,&quot;default&quot;:{&quot;content-type&quot;:&quot;application/json&quot;}},&quot;body&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Body&quot;,&quot;required&quot;:false,&quot;order&quot;:4,&quot;input&quot;:&quot;textarea&quot;,&quot;description&quot;:&quot;The HTTP body supports the use of ${Var} to obtain the field value output by the rule.\nThe content of the default HTTP request body is a JSON string composed of the keys and values of all fields output by the rule.&quot;,&quot;default&quot;:&quot;&quot;},&quot;$resource&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;title&quot;:&quot;Resource ID&quot;,&quot;required&quot;:true,&quot;order&quot;:0,&quot;description&quot;:&quot;Bind a resource to this action&quot;}},&quot;name&quot;:&quot;data_to_webserver&quot;,&quot;for&quot;:&quot;$any&quot;,&quot;description&quot;:&quot;Forward Messages to Web Server&quot;,&quot;category&quot;:&quot;data_forward&quot;,&quot;app&quot;:&quot;emqx_web_hook&quot;},&quot;_value&quot;:[{&quot;label&quot;:&quot;Method&quot;,&quot;value&quot;:&quot;GET&quot;,&quot;key&quot;:&quot;method&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Path&quot;,&quot;value&quot;:&quot;/get/request&quot;,&quot;key&quot;:&quot;path&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Headers&quot;,&quot;value&quot;:{},&quot;key&quot;:&quot;headers&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Body&quot;,&quot;value&quot;:&quot;&quot;,&quot;key&quot;:&quot;body&quot;,&quot;fallbacks&quot;:[]},{&quot;label&quot;:&quot;Resource ID&quot;,&quot;value&quot;:&quot;resource:${ra}&quot;,&quot;key&quot;:&quot;$resource&quot;,&quot;fallbacks&quot;:[]}]}],&quot;description&quot;:&quot;&quot;,&quot;id&quot;:&quot;rule:${__Random(100000,999999,ra2)}&quot;}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="TestPlan.comments">id: ${ra2}</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">3000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="test run" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">${emqx_ip}</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path">/mqtt</stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">con</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">30</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">100</stringProp>
+          </LoopController>
+          <hashTree>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_1</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_2</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_3</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_4</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_5</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_1</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_2</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_3</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_4</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_5</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Success Times Check" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/rules/rule:${ra2}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">10000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count01;count02</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[0].metrics[0].success;$..actions[0].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count11;count12</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[1].metrics[0].success;$..actions[1].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count21;count22</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[2].metrics[0].success;$..actions[2].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count31;count32</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[3].metrics[0].success;$..actions[3].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count0 = ${count01}+${count02};
+ System.out.println(count0);
+ if(count0!=1000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count1 = ${count11}+${count12};
+ System.out.println(count1);
+ if(count1!=1000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count2 = ${count21}+${count22};
+ System.out.println(count2);
+ if(count2!=1000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count3 = ${count31}+${count32};
+ System.out.println(count3);
+ if(count3!=1000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Disable Rule" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;enabled&quot;:false}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules/rule:${ra2}</stringProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">300</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Enable Rule" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;enabled&quot;:true}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules/rule:${ra2}</stringProp>
+          <stringProp name="HTTPSampler.method">PUT</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">3000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="test run" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">${emqx_ip}</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path">/mqtt</stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">con</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">30</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+          </hashTree>
+          <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+            <boolProp name="LoopController.continue_forever">true</boolProp>
+            <stringProp name="LoopController.loops">100</stringProp>
+          </LoopController>
+          <hashTree>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_1</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_2</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_3</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_4</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_5</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_1</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_2</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_3</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_4</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+            <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">
+              <stringProp name="mqtt.topic_name">${test_topic}_5</stringProp>
+              <stringProp name="mqtt.qos_level">1</stringProp>
+              <boolProp name="mqtt.add_timestamp">false</boolProp>
+              <stringProp name="mqtt.message_type">String</stringProp>
+              <stringProp name="mqtt.message_type_fixed_length">1024</stringProp>
+              <stringProp name="mqtt.message_to_sent">{&quot;temp&quot;:24,&quot;humidity&quot;:30,&quot;location&quot;:&quot;hangzhou&quot;}</stringProp>
+              <boolProp name="mqtt.retained_message">false</boolProp>
+            </net.xmeter.samplers.PubSampler>
+            <hashTree/>
+          </hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Success Times Check" enabled="true">
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+              <collectionProp name="Arguments.arguments"/>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.protocol"></stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/rules/rule:${ra2}</stringProp>
+            <stringProp name="HTTPSampler.method">GET</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+              <stringProp name="ConstantTimer.delay">10000</stringProp>
+            </ConstantTimer>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count01;count02</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[0].metrics[0].success;$..actions[0].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count11;count12</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[1].metrics[0].success;$..actions[1].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count21;count22</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[2].metrics[0].success;$..actions[2].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+              <stringProp name="JSONPostProcessor.referenceNames">count31;count32</stringProp>
+              <stringProp name="JSONPostProcessor.jsonPathExprs">$..actions[3].metrics[0].success;$..actions[3].metrics[1].success</stringProp>
+              <stringProp name="JSONPostProcessor.match_numbers">1;1</stringProp>
+              <stringProp name="JSONPostProcessor.defaultValues">err;0</stringProp>
+            </JSONPostProcessor>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count0 = ${count01}+${count02};
+ System.out.println(count0);
+ if(count0!=2000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count1 = ${count11}+${count12};
+ System.out.println(count1);
+ if(count1!=2000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count2 = ${count21}+${count22};
+ System.out.println(count2);
+ if(count2!=2000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+            <BeanShellAssertion guiclass="BeanShellAssertionGui" testclass="BeanShellAssertion" testname="BeanShell Assertion" enabled="true">
+              <stringProp name="BeanShellAssertion.query"> int count3 = ${count31}+${count32};
+ System.out.println(count3);
+ if(count3!=2000) {
+     Failure = true; 
+     FailureMessage = &quot;failed&quot;;
+ }else{
+     FailureMessage = &quot;true&quot;;
+     }</stringProp>
+              <stringProp name="BeanShellAssertion.filename"></stringProp>
+              <stringProp name="BeanShellAssertion.parameters"></stringProp>
+              <boolProp name="BeanShellAssertion.resetInterpreter">false</boolProp>
+            </BeanShellAssertion>
+            <hashTree/>
+          </hashTree>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+      <PostThreadGroup guiclass="PostThreadGroupGui" testclass="PostThreadGroup" testname="tearDown Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+      </PostThreadGroup>
+      <hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/json;charset=utf-8</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+          <stringProp name="HTTPSampler.port">18083</stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path"></stringProp>
+          <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </ConfigTestElement>
+        <hashTree/>
+        <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+          <collectionProp name="AuthManager.auth_list">
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">http://${emqx_ip}:18083</stringProp>
+              <stringProp name="Authorization.username">${emqx_user}</stringProp>
+              <stringProp name="Authorization.password">${emqx_pwd}</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Authorization">
+              <stringProp name="Authorization.url">http://${db_ip}:${port}</stringProp>
+              <stringProp name="Authorization.username">${db_user}</stringProp>
+              <stringProp name="Authorization.password">${db_pwd}</stringProp>
+              <stringProp name="Authorization.domain"></stringProp>
+              <stringProp name="Authorization.realm"></stringProp>
+            </elementProp>
+          </collectionProp>
+          <boolProp name="AuthManager.controlledByThreadGroup">false</boolProp>
+        </AuthManager>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Rule ID" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">rule_id0;rule_id1</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].id;$.data[1].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0;0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">err_rule_id;err_rule_id</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Get Resource ID" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/resources</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="JSON Extractor" enabled="true">
+            <stringProp name="JSONPostProcessor.referenceNames">resource_id0;resource_id1</stringProp>
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.data[0].id;$.data[1].id</stringProp>
+            <stringProp name="JSONPostProcessor.match_numbers">0;0</stringProp>
+            <stringProp name="JSONPostProcessor.defaultValues">err_resource_id;err_resource_id</stringProp>
+          </JSONPostProcessor>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Remove Rule Just Added" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules/${rule_id0}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Remove Rule Just Added" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/rules/${rule_id1}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Remove Resource Just Added" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/resources/${resource_id0}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Remove Resource Just Added" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">${api_version}/resources/${resource_id1}</stringProp>
+          <stringProp name="HTTPSampler.method">DELETE</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="67791721">&quot;code&quot;:0</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">2000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

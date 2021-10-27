@@ -226,11 +226,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/allow_anonymous = true/allow_anonymous = false/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -260,11 +255,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/acl_nomatch = allow/acl_nomatch = deny/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -290,11 +280,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -561,11 +546,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/http:\/\/127.0.0.1:80\/mqtt\/auth/http:\/\/${web_server_ip}:8080${http_auth_path}/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -591,11 +571,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -629,11 +604,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/auth.http.super_req.url/#auth.http.super_req.url/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -659,11 +629,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -1324,11 +1289,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">

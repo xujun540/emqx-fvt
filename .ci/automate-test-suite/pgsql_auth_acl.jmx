@@ -277,11 +277,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/enable_acl_cache = on/enable_acl_cache = off/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -307,11 +302,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -555,11 +545,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/auth.pgsql.server = 127.0.0.1:5432/auth.pgsql.server = ${db_ip}:${port}/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -589,11 +574,6 @@
                 </elementProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">s/#auth.pgsql.username =/auth.pgsql.username = ${pgsql_user}/g</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -619,11 +599,6 @@
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -726,11 +701,6 @@
                   </elementProp>
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">s/auth.pgsql.ssl = off/auth.pgsql.ssl = on/g</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -756,11 +726,6 @@
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">-i</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Argument">
@@ -794,11 +759,6 @@
                   </elementProp>
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">s/#auth.pgsql.ssl.certfile =/auth.pgsql.ssl.certfile = \/certs\/${cert_name}/g</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -824,11 +784,6 @@
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">-i</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Argument">
@@ -1750,11 +1705,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
                 <elementProp name="" elementType="Argument">
                   <stringProp name="Argument.name"></stringProp>
                   <stringProp name="Argument.value">-i</stringProp>
-                  <stringProp name="Argument.metadata">=</stringProp>
-                </elementProp>
-                <elementProp name="" elementType="Argument">
-                  <stringProp name="Argument.name"></stringProp>
-                  <stringProp name="Argument.value">&apos;&apos;</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
                 <elementProp name="" elementType="Argument">
@@ -2723,11 +2673,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">s/auth.pgsql.auth_query = select password from mqtt_user where username = &apos;%u&apos; limit 1/auth.pgsql.auth_query = select password,salt from mqtt_user where username = &apos;%u&apos; limit 1/g</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
@@ -2753,11 +2698,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">-i</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Argument">
@@ -2920,11 +2860,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
                   <elementProp name="" elementType="Argument">
                     <stringProp name="Argument.name"></stringProp>
                     <stringProp name="Argument.value">-i</stringProp>
-                    <stringProp name="Argument.metadata">=</stringProp>
-                  </elementProp>
-                  <elementProp name="" elementType="Argument">
-                    <stringProp name="Argument.name"></stringProp>
-                    <stringProp name="Argument.value">&apos;&apos;</stringProp>
                     <stringProp name="Argument.metadata">=</stringProp>
                   </elementProp>
                   <elementProp name="" elementType="Argument">

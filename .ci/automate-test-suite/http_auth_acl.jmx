@@ -91,12 +91,12 @@
           </elementProp>
           <elementProp name="config_path" elementType="Argument">
             <stringProp name="Argument.name">config_path</stringProp>
-            <stringProp name="Argument.value">${__property(config_path,,/Users/xiangfangyang/docker-compose/etc)}</stringProp>
+            <stringProp name="Argument.value">${__property(config_path,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="docker_path" elementType="Argument">
             <stringProp name="Argument.name">docker_path</stringProp>
-            <stringProp name="Argument.value">${__property(config_path,,/Users/xiangfangyang/docker-compose)}</stringProp>
+            <stringProp name="Argument.value">${__property(config_path,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
         </collectionProp>

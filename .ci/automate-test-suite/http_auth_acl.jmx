@@ -348,7 +348,7 @@
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">40000</stringProp>
+          <stringProp name="ActionProcessor.duration">60000</stringProp>
         </TestAction>
         <hashTree/>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Disable &quot;emqx_mod_acl_internal&quot; Module" enabled="true">
@@ -1761,7 +1761,7 @@
             <boolProp name="mqtt.add_timestamp">false</boolProp>
             <boolProp name="mqtt.debug_response">true</boolProp>
             <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
-            <stringProp name="mqtt.sample_condition_value">10000</stringProp>
+            <stringProp name="mqtt.sample_condition_value">20000</stringProp>
           </net.xmeter.samplers.SubSampler>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
@@ -2339,7 +2339,7 @@
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">15</stringProp>
+          <stringProp name="LoopController.loops">20</stringProp>
         </LoopController>
         <hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="MQTT Pub Sampler" enabled="true">

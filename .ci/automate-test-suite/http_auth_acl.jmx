@@ -99,6 +99,16 @@
             <stringProp name="Argument.value">${__property(docker_path,,)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
+          <elementProp name="node1" elementType="Argument">
+            <stringProp name="Argument.name">node1</stringProp>
+            <stringProp name="Argument.value">node1.emqx.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
+          <elementProp name="node2" elementType="Argument">
+            <stringProp name="Argument.name">node2</stringProp>
+            <stringProp name="Argument.value">node2.emqx.io</stringProp>
+            <stringProp name="Argument.metadata">=</stringProp>
+          </elementProp>
         </collectionProp>
       </Arguments>
       <hashTree/>

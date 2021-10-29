@@ -898,6 +898,10 @@
             </ConstantTimer>
             <hashTree/>
           </hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">5000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
         </hashTree>
         <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="empty acl check" enabled="true">
           <boolProp name="TransactionController.includeTimers">false</boolProp>
@@ -3222,7 +3226,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           </ResponseAssertion>
           <hashTree/>
           <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="constant timer" enabled="true">
-            <stringProp name="ConstantTimer.delay">12000</stringProp>
+            <stringProp name="ConstantTimer.delay">17000</stringProp>
           </ConstantTimer>
           <hashTree/>
         </hashTree>

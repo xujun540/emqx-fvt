@@ -1967,7 +1967,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">50000</stringProp>
+            <stringProp name="ActionProcessor.duration">70000</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
@@ -3365,7 +3365,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">60000</stringProp>
+          <stringProp name="ActionProcessor.duration">70000</stringProp>
         </TestAction>
         <hashTree/>
         <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
@@ -3405,7 +3405,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controler" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">35</stringProp>
+          <stringProp name="LoopController.loops">50</stringProp>
         </LoopController>
         <hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="Pub Sampler" enabled="true">

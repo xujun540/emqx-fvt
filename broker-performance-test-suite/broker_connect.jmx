@@ -99,7 +99,7 @@
           <stringProp name="LoopController.loops">1</stringProp>
         </elementProp>
         <stringProp name="ThreadGroup.num_threads">80000</stringProp>
-        <stringProp name="ThreadGroup.ramp_time">400</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">200</stringProp>
         <boolProp name="ThreadGroup.scheduler">false</boolProp>
         <stringProp name="ThreadGroup.duration"></stringProp>
         <stringProp name="ThreadGroup.delay"></stringProp>
@@ -133,9 +133,16 @@
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">500000</stringProp>
+          <stringProp name="ActionProcessor.duration">300000</stringProp>
         </TestAction>
         <hashTree/>
+        <net.xmeter.samplers.EfficientDisConnectSampler guiclass="net.xmeter.gui.EfficientDisConnectSamplerUI" testclass="net.xmeter.samplers.EfficientDisConnectSampler" testname="Efficient MQTT DisConnect" enabled="true"/>
+        <hashTree>
+          <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Constant Timer" enabled="true">
+            <stringProp name="ConstantTimer.delay">30000</stringProp>
+          </ConstantTimer>
+          <hashTree/>
+        </hashTree>
       </hashTree>
     </hashTree>
   </hashTree>

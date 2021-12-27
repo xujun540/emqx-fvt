@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jmeterTestPlan version="1.2" properties="5.0" jmeter="5.3">
   <hashTree>
-    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="API MySQL Authentication" enabled="true">
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="API MySQL Authn" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
       <boolProp name="TestPlan.functional_mode">false</boolProp>
       <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
@@ -97,7 +97,7 @@
         <stringProp name="filename"></stringProp>
       </ResultCollector>
       <hashTree/>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MySQL Authentication Success" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MySQL Authn Success" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>
@@ -233,7 +233,25 @@ VALUES
             <collectionProp name="Arguments.arguments">
               <elementProp name="" elementType="HTTPArgument">
                 <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&quot;server&quot;:&quot;${mysql_ip}:3306&quot;,&quot;username&quot;:&quot;${mysql_user}&quot;,&quot;password&quot;:&quot;${mysql_pwd}&quot;,&quot;database&quot;:&quot;${database}&quot;,&quot;pool_size&quot;:8,&quot;auto_reconnect&quot;:true,&quot;ssl&quot;:{&quot;enable&quot;:false},&quot;query&quot;:&quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&quot;password_hash_algorithm&quot;:&quot;plain&quot;,&quot;salt_position&quot;:&quot;prefix&quot;,&quot;query_timeout&quot;:&quot;5s&quot;,&quot;backend&quot;:&quot;mysql&quot;,&quot;mechanism&quot;:&quot;password-based&quot;}</stringProp>
+                <stringProp name="Argument.value">{&#xd;
+	&quot;server&quot;: &quot;${mysql_ip}:3306&quot;,&#xd;
+	&quot;username&quot;: &quot;${mysql_user}&quot;,&#xd;
+	&quot;password&quot;: &quot;${mysql_pwd}&quot;,&#xd;
+	&quot;database&quot;: &quot;${database}&quot;,&#xd;
+	&quot;pool_size&quot;: 8,&#xd;
+	&quot;auto_reconnect&quot;: true,&#xd;
+	&quot;ssl&quot;: {&#xd;
+		&quot;enable&quot;: false&#xd;
+	},&#xd;
+	&quot;query&quot;: &quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+	&quot;query_timeout&quot;: &quot;5s&quot;,&#xd;
+	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
+	&quot;mechanism&quot;: &quot;password-based&quot;&#xd;
+}</stringProp>
                 <stringProp name="Argument.metadata">=</stringProp>
               </elementProp>
             </collectionProp>
@@ -319,106 +337,59 @@ VALUES
           </JSONPathAssertion>
           <hashTree/>
         </hashTree>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mysql_id}" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-	&quot;auto_reconnect&quot;: true,&#xd;
-	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
-	&quot;enable&quot;: false,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
-	&quot;password&quot;: &quot;123456789&quot;,&#xd;
-	&quot;password_hash_algorithm&quot;: &quot;plain&quot;,&#xd;
-	&quot;pool_size&quot;: 8,&#xd;
-	&quot;query&quot;: &quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&#xd;
-	&quot;query_timeout&quot;: &quot;4s&quot;,&#xd;
-	&quot;salt_position&quot;: &quot;prefix&quot;,&#xd;
-	&quot;server&quot;: &quot;127.0.0.1:3306&quot;,&#xd;
-	&quot;ssl&quot;: {&#xd;
-        &quot;depth&quot;: 10,&#xd;
-		&quot;enable&quot;: false,&#xd;
-		&quot;reuse_sessions&quot;: true,&#xd;
-		&quot;secure_renegotiate&quot;: true,&#xd;
-		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
-		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
-		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
-	},&#xd;
-	&quot;username&quot;: &quot;root&quot;&#xd;
-}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
-          <stringProp name="HTTPSampler.port">18083</stringProp>
-          <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mysql_id}</stringProp>
-          <stringProp name="HTTPSampler.method">PUT</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">&quot;enable&quot;: false,</stringProp>
-        </HTTPSamplerProxy>
+        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+          <stringProp name="mqtt.server">127.0.0.1</stringProp>
+          <stringProp name="mqtt.port">1883</stringProp>
+          <stringProp name="mqtt.version">3.1</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.protocol">TCP</stringProp>
+          <stringProp name="mqtt.ws_path"></stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.user_name">test</stringProp>
+          <stringProp name="mqtt.password">test</stringProp>
+          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_clean_session">true</stringProp>
+        </net.xmeter.samplers.ConnectSampler>
         <hashTree/>
-        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mysql_id}" enabled="true">
-          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
-          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
-            <collectionProp name="Arguments.arguments">
-              <elementProp name="" elementType="HTTPArgument">
-                <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                <stringProp name="Argument.value">{&#xd;
-	&quot;auto_reconnect&quot;: true,&#xd;
-	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
-	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
-	&quot;enable&quot;: true,&#xd;
-	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
-	&quot;password&quot;: &quot;123456789&quot;,&#xd;
-	&quot;password_hash_algorithm&quot;: &quot;plain&quot;,&#xd;
-	&quot;pool_size&quot;: 8,&#xd;
-	&quot;query&quot;: &quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&#xd;
-	&quot;query_timeout&quot;: &quot;4s&quot;,&#xd;
-	&quot;salt_position&quot;: &quot;prefix&quot;,&#xd;
-	&quot;server&quot;: &quot;127.0.0.1:3306&quot;,&#xd;
-	&quot;ssl&quot;: {&#xd;
-        &quot;depth&quot;: 10,&#xd;
-		&quot;enable&quot;: false,&#xd;
-		&quot;reuse_sessions&quot;: true,&#xd;
-		&quot;secure_renegotiate&quot;: true,&#xd;
-		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
-		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
-		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
-	},&#xd;
-	&quot;username&quot;: &quot;root&quot;&#xd;
-}</stringProp>
-                <stringProp name="Argument.metadata">=</stringProp>
-              </elementProp>
-            </collectionProp>
-          </elementProp>
-          <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
-          <stringProp name="HTTPSampler.port">18083</stringProp>
-          <stringProp name="HTTPSampler.protocol">http</stringProp>
-          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
-          <stringProp name="HTTPSampler.path">${api_version}/authentication/${mysql_id}</stringProp>
-          <stringProp name="HTTPSampler.method">PUT</stringProp>
-          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
-          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
-          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
-          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
-          <stringProp name="HTTPSampler.response_timeout"></stringProp>
-          <stringProp name="TestPlan.comments">&quot;enable&quot;: false,</stringProp>
-        </HTTPSamplerProxy>
+        <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
         <hashTree/>
+        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+          <stringProp name="mqtt.server">127.0.0.1</stringProp>
+          <stringProp name="mqtt.port">1883</stringProp>
+          <stringProp name="mqtt.version">3.1</stringProp>
+          <stringProp name="mqtt.conn_timeout">10</stringProp>
+          <stringProp name="mqtt.protocol">TCP</stringProp>
+          <stringProp name="mqtt.ws_path"></stringProp>
+          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+          <stringProp name="mqtt.clientcert_file_path"></stringProp>
+          <stringProp name="mqtt.clientcert_password"></stringProp>
+          <stringProp name="mqtt.user_name">test_err</stringProp>
+          <stringProp name="mqtt.password">test_err</stringProp>
+          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+          <boolProp name="mqtt.client_id_suffix">true</boolProp>
+          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+          <stringProp name="mqtt.conn_clean_session">true</stringProp>
+        </net.xmeter.samplers.ConnectSampler>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="52471">502</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.custom_message"></stringProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">true</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
         <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="POST /authentication/${mysql_id}/move" enabled="true">
           <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
           <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
@@ -497,28 +468,166 @@ VALUES
           </ResponseAssertion>
           <hashTree/>
         </hashTree>
-        <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
-          <stringProp name="mqtt.server">127.0.0.1</stringProp>
-          <stringProp name="mqtt.port">1883</stringProp>
-          <stringProp name="mqtt.version">3.1</stringProp>
-          <stringProp name="mqtt.conn_timeout">10</stringProp>
-          <stringProp name="mqtt.protocol">TCP</stringProp>
-          <stringProp name="mqtt.ws_path"></stringProp>
-          <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
-          <stringProp name="mqtt.clientcert_file_path"></stringProp>
-          <stringProp name="mqtt.clientcert_password"></stringProp>
-          <stringProp name="mqtt.user_name">test</stringProp>
-          <stringProp name="mqtt.password">test</stringProp>
-          <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
-          <boolProp name="mqtt.client_id_suffix">true</boolProp>
-          <stringProp name="mqtt.conn_keep_alive">300</stringProp>
-          <stringProp name="mqtt.conn_attampt_max">0</stringProp>
-          <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
-          <stringProp name="mqtt.conn_clean_session">true</stringProp>
-        </net.xmeter.samplers.ConnectSampler>
-        <hashTree/>
-        <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
-        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="Close MySQL Authn --enable=false " enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mysql_id}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;auto_reconnect&quot;: true,&#xd;
+	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
+	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
+	&quot;enable&quot;: false,&#xd;
+	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;password&quot;: &quot;123456789&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+	&quot;pool_size&quot;: 8,&#xd;
+	&quot;query&quot;: &quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&#xd;
+	&quot;query_timeout&quot;: &quot;4s&quot;,&#xd;
+	&quot;server&quot;: &quot;127.0.0.1:3306&quot;,&#xd;
+	&quot;ssl&quot;: {&#xd;
+        &quot;depth&quot;: 10,&#xd;
+		&quot;enable&quot;: false,&#xd;
+		&quot;reuse_sessions&quot;: true,&#xd;
+		&quot;secure_renegotiate&quot;: true,&#xd;
+		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
+		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
+		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
+	},&#xd;
+	&quot;username&quot;: &quot;root&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+            <stringProp name="HTTPSampler.port">18083</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/${mysql_id}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">&quot;enable&quot;: false</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path"></stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree/>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+        </hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="ReOpen MySQL Authn --enable=true" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">false</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PUT /authentication/${mysql_id}" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">{&#xd;
+	&quot;auto_reconnect&quot;: true,&#xd;
+	&quot;backend&quot;: &quot;mysql&quot;,&#xd;
+	&quot;database&quot;: &quot;mqtt&quot;,&#xd;
+	&quot;enable&quot;: true,&#xd;
+	&quot;mechanism&quot;: &quot;password-based&quot;,&#xd;
+	&quot;password&quot;: &quot;123456789&quot;,&#xd;
+	&quot;password_hash_algorithm&quot;: {&#xd;
+		&quot;name&quot;: &quot;plain&quot;,&#xd;
+		&quot;salt_position&quot;: &quot;prefix&quot;&#xd;
+	},&#xd;
+	&quot;pool_size&quot;: 8,&#xd;
+	&quot;query&quot;: &quot;SELECT password_hash FROM mqtt_user_test where username = ${username} LIMIT 1&quot;,&#xd;
+	&quot;query_timeout&quot;: &quot;4s&quot;,&#xd;
+	&quot;server&quot;: &quot;127.0.0.1:3306&quot;,&#xd;
+	&quot;ssl&quot;: {&#xd;
+        &quot;depth&quot;: 10,&#xd;
+		&quot;enable&quot;: false,&#xd;
+		&quot;reuse_sessions&quot;: true,&#xd;
+		&quot;secure_renegotiate&quot;: true,&#xd;
+		&quot;user_lookup_fun&quot;: &quot;emqx_tls_psk:lookup&quot;,&#xd;
+		&quot;verify&quot;: &quot;verify_none&quot;,&#xd;
+		&quot;versions&quot;: [&quot;tlsv1.3&quot;, &quot;tlsv1.2&quot;, &quot;tlsv1.1&quot;, &quot;tlsv1&quot;]&#xd;
+	},&#xd;
+	&quot;username&quot;: &quot;root&quot;&#xd;
+}</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain">${emqx_ip}</stringProp>
+            <stringProp name="HTTPSampler.port">18083</stringProp>
+            <stringProp name="HTTPSampler.protocol">http</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">${api_version}/authentication/${mysql_id}</stringProp>
+            <stringProp name="HTTPSampler.method">PUT</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="TestPlan.comments">&quot;enable&quot;: true</stringProp>
+          </HTTPSamplerProxy>
+          <hashTree/>
+          <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">
+            <stringProp name="mqtt.server">127.0.0.1</stringProp>
+            <stringProp name="mqtt.port">1883</stringProp>
+            <stringProp name="mqtt.version">3.1</stringProp>
+            <stringProp name="mqtt.conn_timeout">10</stringProp>
+            <stringProp name="mqtt.protocol">TCP</stringProp>
+            <stringProp name="mqtt.ws_path"></stringProp>
+            <boolProp name="mqtt.dual_ssl_authentication">false</boolProp>
+            <stringProp name="mqtt.clientcert_file_path"></stringProp>
+            <stringProp name="mqtt.clientcert_password"></stringProp>
+            <stringProp name="mqtt.user_name">test</stringProp>
+            <stringProp name="mqtt.password">test</stringProp>
+            <stringProp name="mqtt.client_id_prefix">conn_</stringProp>
+            <boolProp name="mqtt.client_id_suffix">true</boolProp>
+            <stringProp name="mqtt.conn_keep_alive">300</stringProp>
+            <stringProp name="mqtt.conn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.reconn_attampt_max">0</stringProp>
+            <stringProp name="mqtt.conn_clean_session">true</stringProp>
+          </net.xmeter.samplers.ConnectSampler>
+          <hashTree/>
+          <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
+          <hashTree/>
+        </hashTree>
         <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="Delete Username In Mysql" enabled="true">
           <stringProp name="dataSource">mysql8</stringProp>
           <stringProp name="queryType">Update Statement</stringProp>
@@ -574,7 +683,7 @@ VALUES
           <hashTree/>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MySQL Authentication Failed" enabled="true">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="MySQL Authn Failed" enabled="true">
         <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>

@@ -1847,6 +1847,12 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">30000</stringProp>
+          </TestAction>
+          <hashTree/>
           <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="Edit &quot;emqx.conf&quot; --acl_nomatch = deny" enabled="true">
             <boolProp name="SystemSampler.checkReturnCode">false</boolProp>
             <stringProp name="SystemSampler.expectedReturnCode">0</stringProp>
@@ -1967,7 +1973,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">70000</stringProp>
+            <stringProp name="ActionProcessor.duration">40000</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
@@ -3405,7 +3411,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controler" enabled="true">
           <boolProp name="LoopController.continue_forever">true</boolProp>
-          <stringProp name="LoopController.loops">65</stringProp>
+          <stringProp name="LoopController.loops">70</stringProp>
         </LoopController>
         <hashTree>
           <net.xmeter.samplers.PubSampler guiclass="net.xmeter.gui.PubSamplerUI" testclass="net.xmeter.samplers.PubSampler" testname="Pub Sampler" enabled="true">

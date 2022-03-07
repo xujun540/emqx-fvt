@@ -2139,7 +2139,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
             <intProp name="ActionProcessor.action">1</intProp>
             <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">30000</stringProp>
+            <stringProp name="ActionProcessor.duration">50000</stringProp>
           </TestAction>
           <hashTree/>
         </hashTree>
@@ -3694,7 +3694,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
         <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
           <intProp name="ActionProcessor.action">1</intProp>
           <intProp name="ActionProcessor.target">0</intProp>
-          <stringProp name="ActionProcessor.duration">60000</stringProp>
+          <stringProp name="ActionProcessor.duration">80000</stringProp>
         </TestAction>
         <hashTree/>
         <net.xmeter.samplers.ConnectSampler guiclass="net.xmeter.gui.ConnectSamplerUI" testclass="net.xmeter.samplers.ConnectSampler" testname="MQTT Connect" enabled="true">

@@ -1955,12 +1955,6 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
           <boolProp name="TransactionController.parent">true</boolProp>
         </TransactionController>
         <hashTree>
-          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
-            <intProp name="ActionProcessor.action">1</intProp>
-            <intProp name="ActionProcessor.target">0</intProp>
-            <stringProp name="ActionProcessor.duration">20000</stringProp>
-          </TestAction>
-          <hashTree/>
           <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="Edit &quot;emqx.conf&quot; --acl_nomatch = deny" enabled="true">
             <boolProp name="SystemSampler.checkReturnCode">false</boolProp>
             <stringProp name="SystemSampler.expectedReturnCode">0</stringProp>
@@ -1989,6 +1983,12 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             </elementProp>
             <stringProp name="SystemSampler.directory"></stringProp>
           </SystemSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">10000</stringProp>
+          </TestAction>
           <hashTree/>
           <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="Copy &quot;etc&quot; File To Node1" enabled="true">
             <boolProp name="SystemSampler.checkReturnCode">false</boolProp>
@@ -2047,6 +2047,12 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             </elementProp>
             <stringProp name="SystemSampler.directory"></stringProp>
           </SystemSampler>
+          <hashTree/>
+          <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Flow Control Action" enabled="true">
+            <intProp name="ActionProcessor.action">1</intProp>
+            <intProp name="ActionProcessor.target">0</intProp>
+            <stringProp name="ActionProcessor.duration">10000</stringProp>
+          </TestAction>
           <hashTree/>
           <SystemSampler guiclass="SystemSamplerGui" testclass="SystemSampler" testname="Restart Emqx Cluster --node1" enabled="true">
             <boolProp name="SystemSampler.checkReturnCode">false</boolProp>

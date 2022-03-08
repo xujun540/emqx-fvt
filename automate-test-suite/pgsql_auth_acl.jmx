@@ -2195,18 +2195,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
             <stringProp name="mqtt.sample_condition_value">3000</stringProp>
           </net.xmeter.samplers.SubSampler>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="1985609380">hello emqx!!!!!</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
@@ -2692,18 +2681,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
             <stringProp name="mqtt.sample_condition_value">3000</stringProp>
           </net.xmeter.samplers.SubSampler>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="1985609380">hello emqx!!!!!</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
@@ -2814,18 +2792,7 @@ vars.put(&quot;ip&quot;,IP);</stringProp>
             <stringProp name="mqtt.sample_condition">specified elapsed time (ms)</stringProp>
             <stringProp name="mqtt.sample_condition_value">3000</stringProp>
           </net.xmeter.samplers.SubSampler>
-          <hashTree>
-            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">
-              <collectionProp name="Asserion.test_strings">
-                <stringProp name="1985609380">hello emqx!!!!!</stringProp>
-              </collectionProp>
-              <stringProp name="Assertion.custom_message"></stringProp>
-              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
-              <boolProp name="Assertion.assume_success">false</boolProp>
-              <intProp name="Assertion.test_type">6</intProp>
-            </ResponseAssertion>
-            <hashTree/>
-          </hashTree>
+          <hashTree/>
           <net.xmeter.samplers.DisConnectSampler guiclass="net.xmeter.gui.DisConnectSamplerUI" testclass="net.xmeter.samplers.DisConnectSampler" testname="MQTT DisConnect" enabled="true"/>
           <hashTree>
             <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="true">

@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  emqx_single_server:
+    container_name: emqx_single2
+    image: $TARGET:$EMQX_TAG
+    networks:
+      - emqx_bridge

@@ -2855,8 +2855,8 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
 File f_ca = new File(&quot;${ca_route}/ca.pem&quot;);
-File f_key = new File(&quot;${ca_route}/client.key&quot;);
-File f_cert = new File(&quot;${ca_route}/client.pem&quot;);
+File f_key = new File(&quot;${ca_route}/client-key.pem&quot;);
+File f_cert = new File(&quot;${ca_route}/client-cert.pem&quot;);
 BufferedReader br_ca = new BufferedReader(new InputStreamReader(new FileInputStream(f_ca),&quot;UTF-8&quot;));
 BufferedReader br_key = new BufferedReader(new InputStreamReader(new FileInputStream(f_key),&quot;UTF-8&quot;));
 BufferedReader br_cert = new BufferedReader(new InputStreamReader(new FileInputStream(f_cert),&quot;UTF-8&quot;));

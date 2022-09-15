@@ -6,3 +6,12 @@ services:
     image: $TARGET:$EMQX_TAG
     networks:
       - emqx_bridge
+networks:
+  emqx_bridge:
+    driver: bridge
+    name: emqx_bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.100.239.0/24
+          gateway: 172.100.239.1

@@ -84,11 +84,6 @@
             <stringProp name="Argument.value">${__property(emqx_ip_port,,18083)}</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
-          <elementProp name="emqx_ip2_port" elementType="Argument">
-            <stringProp name="Argument.name">emqx_ip2_port</stringProp>
-            <stringProp name="Argument.value">${__property(emqx_ip2_port,,19092)}</stringProp>
-            <stringProp name="Argument.metadata">=</stringProp>
-          </elementProp>
           <elementProp name="emqx_ip_mqtt_port" elementType="Argument">
             <stringProp name="Argument.name">emqx_ip_mqtt_port</stringProp>
             <stringProp name="Argument.value">1883</stringProp>
@@ -464,7 +459,7 @@
             <collectionProp name="Arguments.arguments"/>
           </elementProp>
           <stringProp name="HTTPSampler.domain">${emqx_ip2}</stringProp>
-          <stringProp name="HTTPSampler.port">${emqx_ip2_port}</stringProp>
+          <stringProp name="HTTPSampler.port">${emqx_ip_port}</stringProp>
           <stringProp name="HTTPSampler.protocol"></stringProp>
           <stringProp name="HTTPSampler.contentEncoding"></stringProp>
           <stringProp name="HTTPSampler.path">${api_version}/brokers</stringProp>
@@ -2855,8 +2850,8 @@ import java.io.InputStreamReader;
 import java.io.BufferedReader;
 
 File f_ca = new File(&quot;${ca_route}/ca.pem&quot;);
-File f_key = new File(&quot;${ca_route}/client-key.pem&quot;);
-File f_cert = new File(&quot;${ca_route}/client-cert.pem&quot;);
+File f_key = new File(&quot;${ca_route}/client.key&quot;);
+File f_cert = new File(&quot;${ca_route}/client.pem&quot;);
 BufferedReader br_ca = new BufferedReader(new InputStreamReader(new FileInputStream(f_ca),&quot;UTF-8&quot;));
 BufferedReader br_key = new BufferedReader(new InputStreamReader(new FileInputStream(f_key),&quot;UTF-8&quot;));
 BufferedReader br_cert = new BufferedReader(new InputStreamReader(new FileInputStream(f_cert),&quot;UTF-8&quot;));

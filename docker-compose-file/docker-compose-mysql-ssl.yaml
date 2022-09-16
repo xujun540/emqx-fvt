@@ -10,8 +10,6 @@ services:
       MYSQL_DATABASE: mqtt
       MYSQL_USER: ssluser
       MYSQL_PASSWORD: public
-    ports:
-      - 3306:3306
     volumes:
       - ./certs/cert/ca.pem:/etc/certs/ca-cert.pem
       - ./certs/cert/emqx.pem:/etc/certs/server-cert.pem
@@ -29,3 +27,19 @@ services:
       --ssl-ca=/etc/certs/ca-cert.pem
       --ssl-cert=/etc/certs/server-cert.pem
       --ssl-key=/etc/certs/server-key.pem
+
+  mysql_client:
+    container_name: mysql_client
+    image: mysql:${MYSQL_TAG}
+    networks:
+      - emqx_bridge
+    depends_on:
+      - mysql_server
+    command:
+      - /bin/bash
+      - -c
+      - |
+        service mysql start
+        echo "show tables;" | mysql -h mysql_server -u root -ppublic mqtt mqtt
+        while [[ $$? -ne 0 ]];do echo "show tables;" | mysql -h mysql_server -u root -ppublic mqtt; done
+        echo "ALTER USER 'ssluser'@'%' REQUIRE X509;" | mysql -h mysql_server -u root -ppublic mqtt
